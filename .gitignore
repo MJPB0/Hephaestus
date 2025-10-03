@@ -10,10 +10,10 @@ npm-debug.*
 *.orig.*
 web-build/
 
+.env
+
 # Package manager files
-yarn.lock
-.yarn/
-.pnp.*
+package-lock.json
 
 # builds
 android/
