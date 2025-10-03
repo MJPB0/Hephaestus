@@ -5,7 +5,7 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { MenuProvider } from 'react-native-popup-menu';
 
 // Mock theme data
-export const createMockTheme = (overrides = {}) => ({
+export const createMockTheme = (overrides: any = {}) => ({
   colors: {
     background: '#252A34',
     tabBar: {
@@ -119,15 +119,11 @@ export const createMockLogger = () => ({
 });
 
 // Custom render function with providers
-interface CustomRenderOptions extends RenderOptions {
-  initialTheme?: 'light' | 'dark';
-}
-
 function customRender(
   ui: React.ReactElement,
-  options: CustomRenderOptions = {}
+  options: RenderOptions = {}
 ) {
-  const { initialTheme = 'light', ...renderOptions } = options;
+  const { ...renderOptions } = options;
 
   function Wrapper({ children }: { children: React.ReactNode }) {
     return (

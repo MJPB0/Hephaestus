@@ -256,7 +256,7 @@ describe('Logger', () => {
       expect(logger).toBeDefined();
       
       // In test environment, __DEV__ should be true
-      expect(global.__DEV__).toBe(true);
+      expect((global as any).__DEV__).toBe(true);
     });
   });
 });
