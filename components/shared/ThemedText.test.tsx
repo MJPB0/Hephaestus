@@ -75,13 +75,13 @@ describe('ThemedText', () => {
       ]);
     });
 
-    it('applies bright variant correctly', () => {
-      render(<ThemedText variant="bright">Bright Text</ThemedText>);
+    it('applies light variant correctly', () => {
+      render(<ThemedText variant="light">Light Text</ThemedText>);
       
-      const text = screen.getByText('Bright Text');
+      const text = screen.getByText('Light Text');
       expect(text.props.style).toEqual([
         {
-          color: '#808080', // theme.colors.text.light (bright maps to light)
+          color: '#808080', // theme.colors.text.light
           fontSize: 16,
           fontWeight: '400',
           fontFamily: 'Harmattan',
@@ -201,15 +201,15 @@ describe('ThemedText', () => {
   describe('Combined Props', () => {
     it('combines variant and type correctly', () => {
       render(
-        <ThemedText variant="bright" type="title">
-          Bright Title
+        <ThemedText variant="light" type="title">
+          Light Title
         </ThemedText>
       );
       
-      const text = screen.getByText('Bright Title');
+      const text = screen.getByText('Light Title');
       expect(text.props.style).toEqual([
         {
-          color: '#808080', // bright variant maps to light
+          color: '#808080', // light variant
           fontSize: 32, // title type
           fontWeight: '700', // title type
           fontFamily: 'Harmattan',
@@ -278,7 +278,7 @@ describe('ThemedText', () => {
       render(
         <ThemedText testID="parent-text">
           Hello{' '}
-          <ThemedText variant="bright" type="caption">
+          <ThemedText variant="light" type="caption">
             World
           </ThemedText>
         </ThemedText>

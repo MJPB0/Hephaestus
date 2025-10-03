@@ -2,7 +2,7 @@ import { Text, TextProps } from "react-native";
 import { useStyles } from "../../hooks/useStyles";
 
 export type ThemedTextProps = TextProps & {
-  variant?: "bright" | "dark" | "light";
+  variant?: "dark" | "light";
   type?: "title" | "subTitle" | "caption" | "headline" | "body";
 };
 
@@ -18,9 +18,7 @@ export default function ThemedText({
     fontSize: theme.font.sizes.md,
     fontWeight: theme.font.weight.regular,
     fontFamily: theme.font.family,
-    color:
-      variant === "bright" ? theme.colors.text.light : 
-      variant === "light" ? theme.colors.text.light : theme.colors.text.dark,
+    color: variant === "light" ? theme.colors.text.light : theme.colors.text.dark,
   };
 
   switch (type) {

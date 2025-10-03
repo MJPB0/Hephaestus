@@ -22,3 +22,6 @@ ios/
 # macOS
 .DS_Store
 
+# Test coverage reports
+coverage/
+

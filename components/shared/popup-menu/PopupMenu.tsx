@@ -26,9 +26,21 @@ interface PopupMenuProps {
 }
 
 export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
+  const { theme, styles } = useStyles(stylesheet);
+
+  // Type guard validation to prevent runtime errors
+  if (!options) {
+    console.warn('PopupMenu: options prop is null or undefined');
+    return null;
+  }
+
   const optionsArray = Array.isArray(options) ? options : [options];
 
-  const { theme, styles } = useStyles(stylesheet);
+  // Additional validation to ensure optionsArray is not empty
+  if (optionsArray.length === 0) {
+    console.warn('PopupMenu: options array is empty');
+    return null;
+  }
 
   const option = ({
     text,
