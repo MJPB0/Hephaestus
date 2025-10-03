@@ -23,6 +23,9 @@ export default function ThemedButton({
       onPress={onPress}
       onPressIn={() => setIsActive(true)}
       onPressOut={() => setIsActive(false)}
+      accessible={true}
+      accessibilityRole="button"
+      accessibilityLabel={title}
       style={[
         {
           backgroundColor: !isActive
