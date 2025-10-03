@@ -1,4 +1,4 @@
-# Hephaestus Documentation Index# 📚 Hephaestus Documentation
+# 📚 Hephaestus Documentation
 
 
 
