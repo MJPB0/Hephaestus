@@ -7,6 +7,7 @@ import PopupMenu from "../../shared/popup-menu/PopupMenu";
 import Burger from "../../icons/Burger";
 import Avatar from "../../icons/Avatar";
 import Switch from "../../icons/Switch";
+import logger from "../../../utils/logger";
 
 interface TabsHeaderProps {
   isDashboard: boolean;
@@ -21,9 +22,15 @@ export default function TabsHeader({
 }: TabsHeaderProps) {
   const { styles } = useStyles<Styles>(stylesheet);
 
-  const onLogout = () => router.replace("/logout");
+  const onLogout = () => {
+    logger.auth.logout();
+    logger.navigation.replace('/logout');
+    router.replace("/logout");
+  };
   const handleViewChange = () => {
-    setView(view === "day" ? "month" : "day");
+    const newView = view === "day" ? "month" : "day";
+    logger.user.buttonPress('View Switch', `Switching from ${view} to ${newView}`);
+    setView(newView);
   };
 
   return (
@@ -31,7 +38,7 @@ export default function TabsHeader({
       <PopupMenu
         options={{
           text: "Settings",
-          onPress: () => console.log("Settings pressed"),
+          onPress: () => logger.user.menuAction("Settings", "Burger Menu"),
         }}
         menuTrigger={<Burger size="lg" />}
       />
@@ -41,11 +48,11 @@ export default function TabsHeader({
           options={[
             {
               text: "Profile",
-              onPress: () => console.log("Profile pressed"),
+              onPress: () => logger.user.menuAction("Profile", "Avatar Menu"),
             },
             {
               text: "Preferences",
-              onPress: () => console.log("Preferences pressed"),
+              onPress: () => logger.user.menuAction("Preferences", "Avatar Menu"),
             },
             {
               text: "Logout",

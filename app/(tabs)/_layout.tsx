@@ -2,10 +2,11 @@ import { Tabs, router } from "expo-router";
 import React, { useEffect, useState } from "react";
 import TabsHeader from "../../components/headers/tabs-header";
 import { useStyles } from "../../hooks/useStyles";
-import { Styles, stylesheet } from "./styles/layout.styles";
+import { Styles, stylesheet } from "../../styles/screens/tabs/layout.styles";
 import Statistics from "../../components/icons/Statistics";
 import Home from "../../components/icons/Home";
 import Timer from "../../components/icons/Timer";
+import logger from "../../utils/logger";
 
 export default function TabLayout() {
   const { theme, styles } = useStyles<Styles>(stylesheet);
@@ -33,21 +34,36 @@ export default function TabLayout() {
     >
       <Tabs.Screen
         name="statistics"
-        listeners={{ tabPress: () => setIsDashboard(false) }}
+        listeners={{ 
+          tabPress: () => {
+            logger.navigation.tabChange('statistics');
+            setIsDashboard(false);
+          }
+        }}
         options={{
           tabBarIcon: () => <Statistics size="md" />,
         }}
       />
       <Tabs.Screen
         name="dashboard"
-        listeners={{ tabPress: () => setIsDashboard(true) }}
+        listeners={{ 
+          tabPress: () => {
+            logger.navigation.tabChange('dashboard');
+            setIsDashboard(true);
+          }
+        }}
         options={{
           tabBarIcon: () => <Home size="md" />,
         }}
       />
       <Tabs.Screen
         name="timer"
-        listeners={{ tabPress: () => setIsDashboard(false) }}
+        listeners={{ 
+          tabPress: () => {
+            logger.navigation.tabChange('timer');
+            setIsDashboard(false);
+          }
+        }}
         options={{
           tabBarIcon: () => <Timer size="md" />,
         }}

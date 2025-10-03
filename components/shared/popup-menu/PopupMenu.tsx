@@ -1,4 +1,5 @@
 import { Text, TextStyle, TouchableHighlight, View } from "react-native";
+import { Fragment } from "react";
 import {
   Menu,
   MenuTrigger,
@@ -25,7 +26,7 @@ interface PopupMenuProps {
 }
 
 export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
-  options = [options].flat();
+  const optionsArray = Array.isArray(options) ? options : [options];
 
   const { theme, styles } = useStyles(stylesheet);
 
@@ -96,8 +97,8 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
           OptionTouchableComponent: TouchableHighlight,
         }}
       >
-        {options.map(({ onPress, ...props }, index) => (
-          <>
+        {optionsArray.map(({ onPress, ...props }, index) => (
+          <Fragment key={`popup-menu-fragment-${props.text}-${index}`}>
             <MenuOption
               key={`popup-menu-option-${props.text}-${index}`}
               onSelect={onPress}
@@ -108,13 +109,13 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
                   style: [
                     styles.optionTouchable,
                     index === 0 &&
-                      options.length > 1 &&
+                      optionsArray.length > 1 &&
                       styles.topOptionTouchable,
                     index > 0 &&
-                      index < options.length - 1 &&
+                      index < optionsArray.length - 1 &&
                       styles.middleOptionTouchable,
                     index > 0 &&
-                      index === options.length - 1 &&
+                      index === optionsArray.length - 1 &&
                       styles.bottomOptionTouchable,
                   ],
                 },
@@ -127,8 +128,8 @@ export default function PopupMenu({ menuTrigger, options }: PopupMenuProps) {
               {option(props)}
             </MenuOption>
 
-            {index < options.length - 1 && <View style={styles.separator} />}
-          </>
+            {index < optionsArray.length - 1 && <View style={styles.separator} />}
+          </Fragment>
         ))}
       </MenuOptions>
     </Menu>

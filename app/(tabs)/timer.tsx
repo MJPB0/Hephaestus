@@ -1,7 +1,7 @@
 import { SafeAreaView } from "react-native-safe-area-context";
 import ThemedText from "../../components/shared/ThemedText";
 import { useStyles } from "../../hooks/useStyles";
-import { Styles, stylesheet } from "./styles/timer.styles";
+import { Styles, stylesheet } from "../../styles/screens/tabs/timer.styles";
 import WorkInProgress from "../../components/icons/WorkInProgress";
 
 export default function Timer() {
