@@ -3,7 +3,7 @@
  * Fetches tab design specifications from Figma and updates the app styles
  */
 
-import FigmaClient from './figmaClient.js';
+import FigmaClient from './figmaClient';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as dotenv from 'dotenv';
