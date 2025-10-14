@@ -25,3 +25,8 @@ ios/
 # Test coverage reports
 coverage/
 
+# VS Code personal settings (keep project settings)
+.vscode/extensions.json
+.vscode/*.code-workspace
+.vscode/settings.json.bak
+
