@@ -10,10 +10,23 @@ npm-debug.*
 *.orig.*
 web-build/
 
+.env
+
+# Package manager files
+package-lock.json
+
 # builds
 android/
 ios/
 
 # macOS
 .DS_Store
+
+# Test coverage reports
+coverage/
+
+# VS Code personal settings (keep project settings)
+.vscode/extensions.json
+.vscode/*.code-workspace
+.vscode/settings.json.bak
 

@@ -1,7 +1,7 @@
 import { TextStyle, ViewStyle } from "react-native";
 import StyleSheet from "react-native-media-query";
-import { Style } from "../../../styles/style";
-import { Theme } from "../../../styles/theme.types";
+import { Style } from "../../style";
+import { Theme } from "../../theme.types";
 
 export interface Styles extends Style {
   container: ViewStyle;

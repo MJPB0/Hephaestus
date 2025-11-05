@@ -2,14 +2,14 @@ import { Text, TextProps } from "react-native";
 import { useStyles } from "../../hooks/useStyles";
 
 export type ThemedTextProps = TextProps & {
-  variant?: "bright" | "dark";
+  variant?: "dark" | "light";
   type?: "title" | "subTitle" | "caption" | "headline" | "body";
 };
 
 export default function ThemedText({
   style,
   type = "body",
-  variant = "bright",
+  variant = "light",
   ...rest
 }: ThemedTextProps) {
   const { theme } = useStyles();
@@ -18,8 +18,7 @@ export default function ThemedText({
     fontSize: theme.font.sizes.md,
     fontWeight: theme.font.weight.regular,
     fontFamily: theme.font.family,
-    color:
-      variant === "bright" ? theme.colors.text.light : theme.colors.text.dark,
+    color: variant === "light" ? theme.colors.text.light : theme.colors.text.dark,
   };
 
   switch (type) {
@@ -28,14 +27,15 @@ export default function ThemedText({
       props.fontWeight = theme.font.weight.bold;
       break;
     case "subTitle":
-      props.fontSize = theme.font.sizes.lg;
+      props.fontSize = theme.font.sizes.xl;
+      props.fontWeight = theme.font.weight.semiBold;
       break;
     case "caption":
       props.fontSize = theme.font.sizes.sm;
       break;
     case "headline":
-      props.fontSize = theme.font.sizes.xxxl;
-      props.fontWeight = theme.font.weight.bold;
+      props.fontSize = theme.font.sizes.lg;
+      props.fontWeight = theme.font.weight.semiBold;
       break;
   }
 

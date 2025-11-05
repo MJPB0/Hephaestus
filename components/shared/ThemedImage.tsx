@@ -21,6 +21,7 @@ export default function ThemedImage({
   onPress,
   isSafeAreaView,
   safeAreaViewProps,
+  testID,
   ...rest
 }: ThemedImageProps) {
   const { theme } = useStyles();
@@ -28,6 +29,8 @@ export default function ThemedImage({
   let themedImage = (
     <Image
       style={[{ width: theme.sizes[size], height: theme.sizes[size] }, style]}
+      testID={testID}
+      accessible={true}
       {...rest}
     />
   );
